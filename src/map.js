@@ -35,7 +35,7 @@ export default function initMap(ymaps, containerId) {
     if (!obj.properties.details) {
       loadDetails(objectId).then(data => {
         obj.properties.details = data;
-        objectManager.objects.balloon.setData(obj);
+        return objectManager.objects.balloon.setData(obj);
       });
     }
   });
