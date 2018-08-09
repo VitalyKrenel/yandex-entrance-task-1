@@ -1,4 +1,4 @@
-import { mapServerData } from './mappers';
+import mapServerData from './mappers';
 
 export function loadList() {
   return fetch('/api/stations')
@@ -6,7 +6,6 @@ export function loadList() {
     .then(mapServerData);
 }
 
-export function loadDetails(id) 
-{
+export function loadDetails(id) {
   return fetch(`/api/stations/${id}`).then(response => response.json());
 }

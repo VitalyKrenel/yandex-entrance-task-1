@@ -1,22 +1,22 @@
-export function mapServerData(serverData) {
+export default function mapServerData(serverData) {
   return {
-    type: "FeatureCollection",
+    type: 'FeatureCollection',
     features: serverData.map((obj, index) => ({
       id: index,
-      type: "Feature",
+      type: 'Feature',
       isActive: obj.isActive,
-      geometry: 
+      geometry:
       {
-        type: "Point",
-        coordinates: [obj.lat, obj.long]
+        type: 'Point',
+        coordinates: [obj.lat, obj.long],
       },
       properties: {
-        iconCaption: obj.serialNumber
+        iconCaption: obj.serialNumber,
       },
       options: {
-        preset: getObjectPreset(obj)
-      }
-    }))
+        preset: getObjectPreset(obj),
+      },
+    })),
   };
 }
 

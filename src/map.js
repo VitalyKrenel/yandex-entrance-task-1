@@ -1,12 +1,12 @@
 import { loadList, loadDetails } from './api';
-import { getDetailsContentLayout } from './details';
-import { createFilterControl } from './filter';
+import getDetailsContentLayout from './details';
+import createFilterControl from './filter';
 
 export default function initMap(ymaps, containerId) {
   const myMap = new ymaps.Map(containerId, {
     center: [55.76, 37.64],
     controls: [],
-    zoom: 10
+    zoom: 10,
   });
 
   const objectManager = new ymaps.ObjectManager({
@@ -16,24 +16,24 @@ export default function initMap(ymaps, containerId) {
     clusterDisableClickZoom: false,
     geoObjectOpenBalloonOnClick: false,
     geoObjectHideIconOnBalloonOpen: false,
-    geoObjectBalloonContentLayout: getDetailsContentLayout(ymaps)
+    geoObjectBalloonContentLayout: getDetailsContentLayout(ymaps),
   });
 
-  loadList().then(data => {
+  loadList().then((data) => {
     objectManager.add(data);
   });
 
   myMap.geoObjects.add(objectManager);
 
   // details
-  objectManager.objects.events.add('click', event => {
+  objectManager.objects.events.add('click', (event) => {
     const objectId = event.get('objectId');
     const obj = objectManager.objects.getById(objectId);
 
     objectManager.objects.balloon.open(objectId);
 
     if (!obj.properties.details) {
-      loadDetails(objectId).then(data => {
+      loadDetails(objectId).then((data) => {
         obj.properties.details = data;
         return objectManager.objects.balloon.setData(obj);
       });
@@ -44,10 +44,10 @@ export default function initMap(ymaps, containerId) {
   const listBoxControl = createFilterControl(ymaps);
   myMap.controls.add(listBoxControl);
 
-  var filterMonitor = new ymaps.Monitor(listBoxControl.state);
-  filterMonitor.add('filters', filters => {
+  const filterMonitor = new ymaps.Monitor(listBoxControl.state);
+  filterMonitor.add('filters', (filters) => {
     objectManager.setFilter(
-      obj => filters[obj.isActive ? 'active' : 'defective']
+      obj => filters[obj.isActive ? 'active' : 'defective'],
     );
   });
 }
