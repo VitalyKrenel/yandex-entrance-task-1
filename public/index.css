@@ -13,22 +13,25 @@ body,
 
 .details-label {
   color: gray;
-  text-transform: uppercase;
   font-size: 0.6em;
+  text-transform: uppercase;
 }
 
 .details-title {
-  font-size: 1.3em;
   font-weight: bold;
+  font-size: 1.3em;
 }
 
 .details-state {
-  font-size: 0.8em;
-  color: white;
   display: inline-block;
-  border-radius: 0.2em;
-  padding: .4em .8em;
+  padding: 0.4em 0.8em;
+
+  color: white;
+  font-size: 0.8em;
+
   line-height: 1;
+
+  border-radius: 0.2em;
 }
 
 .details-state_active {
