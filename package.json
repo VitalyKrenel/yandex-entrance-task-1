@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./src ./utils",
+    "stylelint": "stylelint ./public",
     "start": "webpack-dev-server"
   },
   "devDependencies": {
@@ -11,6 +12,9 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "faker": "^4.1.0",
+    "stylelint": "^9.4.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
