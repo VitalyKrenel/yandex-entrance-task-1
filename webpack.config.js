@@ -6,12 +6,12 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: PUBLIC_PATH,
-    filename: 'index.js'
+    filename: 'index.js',
   },
   devServer: {
     contentBase: PUBLIC_PATH,
     compress: true,
     port: 9000,
-    before: initBackendStub
-  }
+    before: initBackendStub,
+  },
 };
